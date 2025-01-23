@@ -2,3 +2,195 @@
 title: my page
 ---
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore anailletnoM</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; text-align: center;">
+
+    <!-- Intestazione -->
+    <header style="background-color: #4CAF50; color: white; padding: 20px;">
+        <h1>Calcolatore anailletnoM</h1>
+        <hr style="width: 50%; border: 1px solid white;">
+    </header>
+
+    <!-- Sezione Input -->
+    <section style="margin: 30px auto; max-width: 400px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h2>Inserisci i dati</h2>
+    <form id="form">    
+        <div style="margin-bottom: 15px;">
+            <label for="campo1" style="display: block; margin-bottom: 8px;">Produzione:</label>
+            <input type="number" id="campo1" placeholder="numero di bottiglie / tappi / altri oggetti" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="campo2" style="display: block; margin-bottom: 8px;">Capacità:</label>
+            <input type="number" id="campo2" placeholder="capacità del bancale / scatola / altri contenitori" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="campo3" style="display: block; margin-bottom: 8px;">Livelli:</label>
+            <input type="number" id="campo3" placeholder="numero strati / sacchi / altri livelli" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="campo4" style="display: block; margin-bottom: 8px;">Capacità livello:</label>
+            <input type="number" id="campo4" placeholder="capacità dello strato / sacco / altro livello" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+</form>
+<button type="button" onclick="clearForm()">RESET</button>
+    </section>
+
+    <!-- Sezione Risultato -->
+    <section style="margin: 30px auto; max-width: 400px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h2>Unità complete</h2>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="output1" style="display: block; margin-bottom: 8px;">bancali / scatoile / altri contenutori COMPLETI:</label>
+            <output id="output1" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
+        </div>
+
+	<h1>+</h1>
+	<h2>Unità parziali</h2>
+
+        <div style="margin-bottom: 15px;">
+            <label for="output2" style="display: block; margin-bottom: 8px;">numero strati / sacchi / altri livelli:</label>
+            <output id="output2" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="output3" style="display: block; margin-bottom: 8px;">oggetti sfusi:</label>
+            <output id="output3" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
+        </div>
+
+<div style="margin-bottom: 30px;">
+            <label for="output4" style="display: block; margin-bottom: 8px;">da rimuovere allo strato completo:</label>
+            <output id="output4" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
+        </div>
+<button type="button" onclick="downloadFile()">DOWNLOAD</button>
+    </section>
+
+    <script>
+        // Variabili per ogni input
+        let produzione = 0;
+        let capacita = 0;
+        let livelli = 0;
+        let capLivello = 0;
+let complete = 0;
+let strati = 0;
+let oggetti = 0;
+let menoOggetti = 0;
+
+        // Selezioniamo gli input e gli output
+        const output1 = document.getElementById('output1'); // unita complete
+        const output2 = document.getElementById('output2'); // numero strati
+        const output3 = document.getElementById('output3'); // numero oggetti
+	const output4 = document.getElementById('output4'); // numero strato - oggetti
+
+        // Prendiamo gli input
+        const campo1 = document.getElementById('campo1');
+        const campo2 = document.getElementById('campo2');
+        const campo3 = document.getElementById('campo3');
+        const campo4 = document.getElementById('campo4');
+
+        // Aggiungiamo gli eventi per aggiornare le variabili quando l'utente modifica i valori
+        campo1.addEventListener('input', () => {
+            produzione = parseInt(campo1.value) || 0; // Se l'input non è valido, assegniamo 0
+            calcolaRisultati();
+        });
+
+        campo2.addEventListener('input', () => {
+            capacita = parseInt(campo2.value) || 0;
+            calcolaRisultati();
+        });
+
+        campo3.addEventListener('input', () => {
+            livelli = parseInt(campo3.value) || 0;
+            calcolaRisultati();
+        });
+
+        campo4.addEventListener('input', () => {
+            capLivello = parseInt(campo4.value) || 0;
+            calcolaRisultati();
+        });
+
+        // Funzione per calcolare i risultati
+
+
+        function calcolaRisultati() {
+            complete = produzione/capacita; // complete
+
+	unita = parseInt(complete)*capacita;
+            strati = (produzione-unita)/capLivello; // strati
+
+	strat = parseInt(strati)*capLivello;
+            oggetti = produzione - (unita + strat); // sfusi
+
+	menoOggetti = oggetti - capLivello;
+if(oggetti == 0){
+menoOggetti = 0;
+}
+
+            // Aggiorniamo gli output
+            output1.textContent = parseInt(complete);
+            output2.textContent = parseInt(strati);
+            output3.textContent = parseInt(oggetti);
+	output4.textContent = -Math.abs(menoOggetti);
+
+        }
+
+function clearForm() {
+   document.getElementById("form").reset();
+  }
+
+function downloadFile() {
+            // Recupera i dati inseriti
+            const prod = document.getElementById('campo1').value;
+            const cap = document.getElementById('campo2').value;
+            const liv = document.getElementById('campo3').value;
+	const capLiv = document.getElementById('campo4').value;
+
+            // Crea il contenuto del file con le etichette
+            let content = "";
+content += `Produzione: ${prod}\n`;
+content += `Capacita: ${cap}\n`;
+content += `Livelli: ${liv}\n`;
+content += `Capacita livello: ${capLiv}\n`;
+content += `\n----------------------------------------------------\n`;
+content += `\nRISULTATO:\n`;
+content += `Unita complete: ${parseInt(complete)}\n`;
+content += `\n+\n`;
+content += `\nStrati: ${parseInt(strati)}\n`;
+content += `Oggetti sfusi: ${oggetti}\n`;
+content += `Da rimuovere allo strato: ${menoOggetti}\n`;
+
+            // Ottieni la data corrente
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Mese con 2 cifre
+            const day = currentDate.getDate().toString().padStart(2, '0'); // Giorno con 2 cifre
+const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();            
+const formattedDate = `${day}_${month}_${year}-${hours}:${minutes}:${seconds}`; // Formato: YYYY-MM-DD
+
+            // Crea un blob con i dati
+            const blob = new Blob([content], { type: 'text/plain' });
+
+            // Crea un link per il download con la data nel nome del file
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `calcolo_${formattedDate}.txt`; // Nome del file con la data
+
+            // Simula il clic per avviare il download
+            link.click();
+        }
+
+    </script>
+
+</body>
+</html>
