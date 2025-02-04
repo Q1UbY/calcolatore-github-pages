@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>CALCOLATORE BY Q1UbY\nAll rights reserved</title>
+				<title>CALCOLATORE BY Q1UbY All rights reserved</title>
 				
 			</head>
 			<body style="font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; text-align: center;">
@@ -21,35 +21,52 @@
 					<!-- made by Q1UbY -->
 					
 					<section style="margin: 30px auto; max-width: 400px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-					
-						<h2>INSERISCI DATI111</h2>
-						
 						<form id="form">
 						
+						<style>
+							#campo1::placeholder {
+								color: #4CBEE4;
+							}
+							#campo2::placeholder {
+								color: #4CBEE4;
+							}
+							#campo3::placeholder {
+								color: #4CBEE4;
+							}
+							#campo4::placeholder {
+								color: #4CBEE4;
+							}
+						</style>
+						
 							<div style="margin-bottom: 15px;">
-								<label for="campo1" style="display: block; margin-bottom: 8px; font-weight: bold; color: #5FBFE8;">PRODUZIONE COLLI:</label>
-								<input type="number" id="campo1" placeholder="numero di bottiglie / tappi / altri oggetti" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+								<label for="campo1" style="display: block; margin-bottom: 1px; font-weight: italic; color: #070909; font-size: 13px;">DA PRODURRE</label>
+									<input type="number" id="campo1" placeholder="DA PRODURRE"
+										style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px; 
+										font-size: 16px; color: #4CBEE4; font-weight: bold;">
 							</div>
-							
-								<br>
+
 								
 							<div style="margin-bottom: 15px;">
-								<label for="campo2" style="display: block; margin-bottom: 8px; font-weight: bold; color: #5FBFE8;">CAPACITÀ:</label>
-								<input type="number" id="campo2" placeholder="capacità del bancale / scatola / altri contenitori" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+							<label for="campo1" style="display: block; margin-bottom: 1px; font-weight: italic; color: #070909; font-size: 13px;">Qta per BANCALE / SCATOLA</label>
+									<input type="number" id="campo2" placeholder="Qta per BANCALE / SCATOLA"
+										style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px; 
+										font-size: 16px; color: #4CBEE4; font-weight: bold;">
 							</div>
-							
-								<br>
+
 							
 							<div style="margin-bottom: 15px;">
-								<label for="campo3" style="display: block; margin-bottom: 8px; font-weight: bold; color: #5FBFE8;">LIVELLI:</label>
-								<input type="number" id="campo3" placeholder="numero strati / sacchi / altri livelli" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+							<label for="campo1" style="display: block; margin-bottom: 1px; font-weight: italic; color: #070909; font-size: 13px;">numero STRATI / SACCHI</label>
+								<input type="number" id="campo3" placeholder="numero STRATI / SACCHI"
+										style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px; 
+										font-size: 16px; color: #4CBEE4; font-weight: bold;">
 							</div>	
-
-								<br>
+ 
 											
 							<div style="margin-bottom: 30px;">
-								<label for="campo4" style="display: block; margin-bottom: 8px; font-weight: bold; color: #5FBFE8;">CAPACITÀ LIVELLI:</label>
-								<input type="number" id="campo4" placeholder="capacità dello strato / sacco / altro livello" style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+							<label for="campo1" style="display: block; margin-bottom: 1px; font-weight: italic; color: #070909; font-size: 13px;">Qta per STRATI / SACCHI</label>
+								<input type="number" id="campo4" placeholder="Qta per STRATI / SACCHI"
+										style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 5px; 
+										font-size: 16px; color: #4CBEE4; font-weight: bold;">
 							</div>
 							
 						</form>
@@ -62,23 +79,19 @@
 							<!-- made by Q1UbY -->
 							
 								<section style="margin: 30px auto; max-width: 400px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-								
-									<h2>UNITÀ COMPLETE</h2>
+
 									
 									<div style="margin-bottom: 15px;">
-										<label for="output1" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">BANCALI / SCATOLE / ALTRI CONTENITORI COMPLETI:</label>
+										<label for="output1" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">BANCALI / SCATOLE:</label>
 										<output id="output1" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
 									</div>
-									
-										<h1>+</h1>
-											
-										<h2>UNITÀ PARZIALI</h2>
-											
+
 									<div style="margin-bottom: 15px;">
-										<label for="output2" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">NUMERO STRATI / SACCHI / ALTRI LIVELLI:</label>
+										<label for="output2" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">NUMERO STRATI / SACCHI:</label>
 										<output id="output2" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
 									</div>
 									
+									<!--
 									<div style="margin-bottom: 30px;">
 										<label for="output3" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">OGGETTI SFUSI:</label>
 										<output id="output3" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
@@ -88,6 +101,20 @@
 										<label for="output3" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">DA RIMUOVERE AD UNO STRATO COMPLETO:</label>
 										<output id="output4" style="padding: 10px; width: 100%; max-width: 300px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
 									</div>
+									 -->
+									
+									<div style="margin-bottom: 30px; display: flex; gap: 20px;">
+										<div style="flex: 1;">
+											<label for="output3" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">OGGETTI SFUSI:</label>
+												<output id="output3" style="padding: 8px; width: 100%; max-width: 220px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
+										</div>
+
+										<div style="flex: 1;">
+											<label for="output4" style="display: block; margin-bottom: 8px; font-weight: bold; color: #FE9900;">OPPURE:</label>
+											<output id="output4" style="padding: 8px; width: 100%; max-width: 220px; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 5px; background-color: #f7f7f7; text-align: center;">0</output>
+										</div>
+									</div>
+
 
 									<button type="button" onclick="downloadFile()">DOWNLOAD</button>
 							</section>
